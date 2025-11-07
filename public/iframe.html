@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>body{margin:0;background:#010409;}</style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <script type="module">
+    import p5 from 'https://esm.sh/p5@1.7.0';
+
+    let p;
+    new p5(s => {
+      s.setup = () => {
+        s.createCanvas(s.windowWidth, s.windowHeight, s.WEBGL);
+        s.camera(0, 0, 200, 0, 0, 0, 0, 1, 0);
+        s.perspective(60 * Math.PI / 180, s.width / s.height, 0.1, 1000);
+      };
+    }, document.getElementById('c'));
+
+    window.realms = {
+      'book_of_pictura': {
+        bg: (r, g, b) => p.background(r, g, b),
+        f : (r, g, b) => p.fill(r, g, b),
+        c : (x, y, r) => p.circle(x, y, r * 2),
+        b : (x, y, z, w, h, d) => {
+          p.push();
+          p.translate(x, y, z);
+          p.box(w, h, d);
+          p.pop();
+        },
+        cam: (t, ph, rad) => p.camera(
+          rad * Math.cos(ph) * Math.cos(t),
+          rad * Math.sin(ph),
+          rad * Math.cos(ph) * Math.sin(t),
+          0, 0, 0, 0, 1, 0
+        ),
+        rot: (x, y, z) => {
+          p.rotateX(x);
+          p.rotateY(y);
+          p.rotateZ(z);
+        },
+        push: () => p.push(),
+        pop : () => p.pop(),
+      },
+    };
+
+    window.addEventListener('message', e => {
+      if (e.data.cmd === 'run') {
+        try { new Function(e.data.code)(); }
+        catch (err) { console.error(err); }
+      }
+      if (e.data.cmd === 'err') {
+        console.error(e.data.msg);
+      }
+    });
+  </script>
+</body>
+</html>

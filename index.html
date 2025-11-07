@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wizard.mom – Graphics Spells</title>
+  <link rel="stylesheet" href="/monaco.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <header id="topbar">
+    <span id="logo">🧙‍♂️  Wizard.mom</span>
+    <button id="run" title="Ctrl-Enter">▶ Run</button>
+    <select id="sample">
+      <option value="circle">Circle</option>
+      <option value="spin">Spinning Box</option>
+    </select>
+  </header>
+
+  <main id="panels">
+    <section id="editor-pane">
+      <div id="editor"></div>
+    </section>
+    <section id="output-pane">
+      <div id="canvas"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
