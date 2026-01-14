@@ -1,18 +1,19 @@
 {
-  "name": "wizard-web",
-  "private": true,
+  "name": "wizard",
   "version": "0.0.0",
-  "type": "module",
+  "homepage": "https://dawitbaslyos.github.io/Wizard",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "typescript": "~5.9.3",
     "vite": "^7.1.7"
   },
   "dependencies": {
-    "monaco-editor": "^0.54.0"
+    "monaco-editor": "^0.53.0"
   }
 }
