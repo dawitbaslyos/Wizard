@@ -28,7 +28,6 @@ const App: React.FC = () => {
 
   const handleAuth = () => {
     if (user.isLoggedIn) {
-      // Simple logout for demo
       setUser({ id: '', name: '', isLoggedIn: false });
       setCurrentView('editor');
     } else {
@@ -37,7 +36,8 @@ const App: React.FC = () => {
   };
 
   const loginUser = (name: string) => {
-    setUser({ id: 'u1', name, isLoggedIn: true });
+    // Simulate Firebase GitHub Signup logic
+    setUser({ id: 'u-' + Math.random().toString(36).substr(2, 9), name, isLoggedIn: true });
     setShowAuth(false);
   };
 
@@ -57,13 +57,13 @@ const App: React.FC = () => {
       <main className="max-w-screen-2xl mx-auto p-6 lg:p-12 animate-in fade-in duration-1000">
         
         {currentView === 'editor' && (
-          <div className="space-y-12">
+          <div className="space-y-12 animate-in slide-in-from-bottom-2 duration-700">
             {/* Editor Row */}
             <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              <div className={`border p-6 h-full transition-colors duration-700 ${isDark ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-zinc-50/40'}`}>
+              <div className={`border p-6 h-full transition-colors duration-700 ${isDark ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-zinc-50/40 shadow-sm'}`}>
                 <Editor code={code} setCode={setCode} onClear={() => setCode(INITIAL_CODE)} theme={theme} />
               </div>
-              <div className={`border p-6 h-full transition-colors duration-700 flex flex-col items-center justify-center ${isDark ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-zinc-50/40'}`}>
+              <div className={`border p-6 h-full transition-colors duration-700 flex flex-col items-center justify-center ${isDark ? 'border-zinc-800 bg-zinc-950/40' : 'border-zinc-200 bg-zinc-50/40 shadow-sm'}`}>
                 <label className={`text-[11px] uppercase tracking-[0.3em] font-bold opacity-30 block mb-6 text-center w-full`}>The Manifestation</label>
                 <MagicCanvas renderState={renderState} theme={theme} />
               </div>
@@ -71,10 +71,10 @@ const App: React.FC = () => {
 
             {/* Support/Docs Row */}
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className={`lg:col-span-8 border p-8 transition-colors duration-700 ${isDark ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <div className={`lg:col-span-8 border p-8 transition-colors duration-700 ${isDark ? 'border-zinc-800' : 'border-zinc-200 shadow-sm'}`}>
                 <Spellbook theme={theme} />
               </div>
-              <div className={`lg:col-span-4 border p-8 transition-colors duration-700 ${isDark ? 'border-zinc-800' : 'border-zinc-200'}`}>
+              <div className={`lg:col-span-4 border p-8 transition-colors duration-700 ${isDark ? 'border-zinc-800' : 'border-zinc-200 shadow-sm'}`}>
                 <WizardAssistant />
               </div>
             </section>
