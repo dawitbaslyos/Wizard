@@ -1,5 +1,5 @@
 
-import { LibraryItem } from './types';
+import { LibraryItem, ManifestedWork } from './types';
 
 export const WIZARD_LIBRARIES: LibraryItem[] = [
   {
@@ -76,3 +76,30 @@ conjure sphere at 200 200 0 size 220 color "white"
 transmute opacity 0.8
 scribble text "ETHER CORE ACTIVATED" at 120 380 color "#818cf8"
 `;
+
+export const MOCK_LIBRARY_WORKS: ManifestedWork[] = [
+  {
+    id: '1',
+    title: 'Void Singularity',
+    author: 'Archmage Zephyr',
+    timestamp: '3 days ago',
+    code: `invoke book of ether\nenchant background "black"\ntransmute spin 0.05\nconjure sphere at 200 200 0 size 100 color "white"`
+  },
+  {
+    id: '2',
+    title: 'Neon Glyphs',
+    author: 'Mystic Luna',
+    timestamp: '1 week ago',
+    code: `invoke book of picture\nenchant background "#050505"\nconjure circle at 200 200 size 150 color "#00ffcc"`
+  }
+];
+
+export const MOCK_MY_WORKS: ManifestedWork[] = [
+  {
+    id: '3',
+    title: 'My First Ritual',
+    author: 'Self',
+    timestamp: 'Today',
+    code: INITIAL_CODE
+  }
+];
